@@ -1,19 +1,10 @@
 import { Button } from '@/components/ui/button';
-import {
-    Menubar,
-    MenubarContent,
-    MenubarItem,
-    MenubarMenu,
-    MenubarSeparator,
-    MenubarShortcut,
-    MenubarTrigger,
-} from '@/components/ui/menubar';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 
 const Navbar = () => {
     return (
-        <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">
+        <nav className="w-full h-16 backdrop-blur-lg z-10">
             <div className="h-full w-full bg-white/60">
                 <div className="flex items-center justify-between w-full md:max-w-7xl h-full mx-auto ">
                     <div>
