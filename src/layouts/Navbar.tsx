@@ -4,22 +4,32 @@ import logo from '../assets/images/logo.png';
 
 const Navbar = () => {
     return (
-        <nav className="w-full h-16 backdrop-blur-lg z-10">
-            <div className="h-full w-full bg-white/60">
-                <div className="flex items-center justify-between w-full md:max-w-7xl h-full mx-auto ">
+        <nav className="w-full h-16 backdrop-blur-lg z-10 py-2">
+            <div className="container bg-white/60">
+                <div className="flex items-center justify-between w-full h-full mx-auto ">
                     <div>
-                        <img className="h-[50px]" src={logo} alt="log" />
+                        <Link to="/">
+                            <img className="h-[50px]" src={logo} alt="log" />
+                        </Link>
                     </div>
                     <div>
                         <ul className="flex items-center">
                             <li>
-                                <Button variant="link" asChild>
+                                <Button
+                                    className="text-md"
+                                    variant="link"
+                                    asChild
+                                >
                                     <Link to="/">Home</Link>
                                 </Button>
                             </li>
                             <li>
-                                <Button variant="link" asChild>
-                                    <Link to="/products">All Books</Link>
+                                <Button
+                                    className="text-md"
+                                    variant="link"
+                                    asChild
+                                >
+                                    <Link to="/books">All Books</Link>
                                 </Button>
                             </li>
                         </ul>
@@ -27,8 +37,21 @@ const Navbar = () => {
                     <div className="min-w-[200px]">
                         <ul className="flex justify-end">
                             <li>
-                                <Button variant="link" asChild>
+                                <Button
+                                    className="text-md"
+                                    variant="link"
+                                    asChild
+                                >
                                     <Link to="/signIn">Sign In</Link>
+                                </Button>
+                            </li>
+                            <li>
+                                <Button
+                                    className="text-md"
+                                    variant="link"
+                                    asChild
+                                >
+                                    <Link to="/signIn">Sign Up</Link>
                                 </Button>
                             </li>
                         </ul>

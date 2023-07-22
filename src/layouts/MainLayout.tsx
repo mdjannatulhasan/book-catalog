@@ -4,11 +4,12 @@ import Footer from './Footer';
 
 export default function MainLayout() {
     return (
-        <div>
+        <div className="">
             <Navbar />
             <div>
                 <Outlet />
             </div>
+            <Footer></Footer>
         </div>
     );
 }
