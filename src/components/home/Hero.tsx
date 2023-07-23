@@ -1,9 +1,11 @@
-import heroImg from '../../assets/images/hero.avif';
+import heroImg from '../../assets/images/hero.webp';
 
 const Hero = () => {
     return (
         <section
-            style={{ backgroundImage: `url(${heroImg})` }}
+            style={{
+                backgroundImage: `url(${heroImg})`,
+            }}
             className="relative bg-cover bg-center"
         >
             <div className="container py-36 relative z-10">
