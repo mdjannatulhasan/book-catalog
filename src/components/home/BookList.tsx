@@ -22,7 +22,7 @@ const BookList = () => {
                 'https://i.ibb.co/pj1VmCK/two-towers-illustration-johan-egerkrans.jpg',
             price: 14.99,
             author: 'J.R.R. Tolkien',
-            genre: 'Fantasy',
+            genre: 'Adventure',
             publicationDate: 'November 11, 1954',
             reviews: 3927,
         },
@@ -60,7 +60,7 @@ const BookList = () => {
             coverImage: 'https://i.ibb.co/2S2Jkkn/2359-1.webp',
             price: 14.99,
             author: 'J.K. Rowling',
-            genre: 'Fantasy',
+            genre: 'Adventure',
             publicationDate: 'July 8, 1999',
             reviews: 6901,
         },
@@ -88,7 +88,7 @@ const BookList = () => {
             coverImage: 'https://i.ibb.co/R2Dn1Wz/2359-2.webp',
             price: 17.99,
             author: 'J.K. Rowling',
-            genre: 'Fantasy',
+            genre: 'Thriller',
             publicationDate: 'July 16, 2005',
             reviews: 6743,
         },
@@ -224,7 +224,7 @@ const BookList = () => {
                         Wonder and Reflection.
                     </SubTitle>
 
-                    <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-1 lg:gap-6">
+                    <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-2 max-[460px]:grid-cols-1 gap-6 mt-6">
                         {bookItems}
                     </div>
                 </div>
