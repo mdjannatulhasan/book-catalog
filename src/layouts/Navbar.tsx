@@ -3,17 +3,15 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 import {
     Sheet,
-    SheetClose,
     SheetContent,
     SheetDescription,
-    SheetFooter,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
 } from '@/components/ui/sheet';
 import { LucideAlignRight } from 'lucide-react';
 import { GiBookCover, GiHouse } from 'react-icons/gi';
-import { BiLogIn, BiLogOut, BiSolidUserPlus } from 'react-icons/bi';
+import { BiLogIn, BiSolidUserPlus } from 'react-icons/bi';
 import NavLink from '@/components/common/NavLink';
 
 const Navbar = () => {

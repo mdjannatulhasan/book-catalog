@@ -20,23 +20,23 @@ const Hero = () => {
                     </p>
                     <form
                         onSubmit={handleSubmit}
-                        className="mt-5 flex flex-col gap-4 w-full justify-center items-center"
+                        className="mt-5 flex flex-col gap-5 max-w-[800px] w-full justify-center items-center rounded-md"
                     >
                         <div className="flex gap-2 w-full justify-center">
                             <input
                                 type="text"
                                 placeholder="Please enter title, author or genre"
-                                className="border border-blue-600 px-2 py-1 w-full max-w-[450px] rounded-md"
+                                className="border border-blue-600 px-3 py-2 w-full max-w-[450px] rounded-md"
                             />
                             <input
                                 type="number"
                                 placeholder="Publication Year"
-                                className="border border-blue-600 px-2 py-1 w-full max-w-[150px] rounded-md"
+                                className="border border-blue-600 pl-3 pr-1 py-2 w-full max-w-[150px] rounded-md"
                             />
                             <input
                                 type="text"
                                 placeholder="Genre"
-                                className="border border-blue-600 px-2 py-1 w-full max-w-[150px] rounded-md"
+                                className="border border-blue-600 px-3 py-2 w-full max-w-[150px] rounded-md"
                             />
                         </div>
                         <div className="w-full flex justify-center">

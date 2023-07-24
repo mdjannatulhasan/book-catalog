@@ -10,11 +10,13 @@ const Book = ({
 }: IBook) => {
     return (
         <div className="shadow p-4 rounded-md relative">
-            <img
-                src={coverImage}
-                alt={`${title} book cover`}
-                className="lg:max-w-sm w-full rounded-md"
-            />
+            {coverImage && (
+                <img
+                    src={coverImage}
+                    alt={`${title} book cover`}
+                    className="lg:max-w-sm w-full rounded-md"
+                />
+            )}
             <div className="mt-4 flex flex-col gap-2 items-start">
                 <p className="text-[#F77F00]">{genre}</p>
 
