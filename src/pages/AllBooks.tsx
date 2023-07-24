@@ -1,5 +1,13 @@
+import BookList from '@/components/all-books/BookList';
+import Hero from '@/components/all-books/Hero';
+
 const AllBooks = () => {
-    return <div>All books</div>;
+    return (
+        <>
+            <Hero />
+            <BookList />
+        </>
+    );
 };
 
 export default AllBooks;

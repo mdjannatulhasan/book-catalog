@@ -10,26 +10,18 @@ const Footer = () => {
                     </div>
                     <div className="flex gap-20">
                         <ul className="space-y-2">
-                            <li>Explore By</li>
-                            <li>Category</li>
-                            <li>Author</li>
-                            <li>Publisher</li>
+                            <li className="text-[#ffffff]">Explore By</li>
+                            <li className="text-[#ffffff]">Category</li>
+                            <li className="text-[#ffffff]">Author</li>
+                            <li className="text-[#ffffff]">Publisher</li>
                         </ul>
                     </div>
                     <div className="flex gap-20">
                         <ul className="space-y-2">
-                            <li>Explore By</li>
-                            <li>Category</li>
-                            <li>Author</li>
-                            <li>Publisher</li>
-                        </ul>
-                    </div>
-                    <div className="flex gap-20">
-                        <ul className="space-y-2">
-                            <li>Explore By</li>
-                            <li>Category</li>
-                            <li>Author</li>
-                            <li>Publisher</li>
+                            <li className="text-[#ffffff]">Explore By</li>
+                            <li className="text-[#ffffff]">Category</li>
+                            <li className="text-[#ffffff]">Author</li>
+                            <li className="text-[#ffffff]">Publisher</li>
                         </ul>
                     </div>
                     <div className="flex gap-2 text-2xl"></div>
