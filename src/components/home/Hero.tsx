@@ -9,12 +9,12 @@ const Hero = () => {
             className="relative bg-cover bg-center"
         >
             <div className="container py-36 relative z-10">
-                <div className=" max-w-[700px] text-[#eaeaea]">
+                <div className=" max-w-[700px]">
                     <div>
-                        <h1 className="text-5xl font-semibold leading-snug">
+                        <h1 className="text-5xl font-semibold leading-snug text-[#eaeaea]">
                             Journey Through the Pages of Knowledge
                         </h1>
-                        <p className="my-5 text-2xl">
+                        <p className="my-5 text-2xl text-[#eaeaea]">
                             Step into a boundless universe of captivating
                             stories. Immerse yourself in the magic of books,
                             where imagination knows no limits. Explore, escape,
