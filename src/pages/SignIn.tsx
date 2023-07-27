@@ -19,7 +19,7 @@ import { useAppDispatch } from '@/redux/hook';
 import { setUser } from '@/redux/features/user/userSlice';
 
 const SignIn = () => {
-    const [loginUser, { isLoading, error, data }] = useLoginUserMutation();
+    const [loginUser, { error }] = useLoginUserMutation();
     const { toast } = useToast();
     const dispatch = useAppDispatch();
 
