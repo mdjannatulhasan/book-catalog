@@ -1,5 +1,11 @@
+import Hero from '@/components/add-book/Hero';
+
 const AddBook = () => {
-    return <div>Add Book</div>;
+    return (
+        <>
+            <Hero />
+        </>
+    );
 };
 
 export default AddBook;
