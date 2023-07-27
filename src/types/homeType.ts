@@ -1,4 +1,5 @@
 export type IBook = {
+    code?: string;
     title: string;
     coverImage: string;
     price: number;

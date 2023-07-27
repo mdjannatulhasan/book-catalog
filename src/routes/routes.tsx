@@ -7,6 +7,7 @@ import Home from '@/pages/Home';
 import SignIn from '@/pages/SignIn';
 import SignUp from '@/pages/SignUp';
 import { createBrowserRouter } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
 
 const routes = createBrowserRouter([
     {
@@ -27,7 +28,11 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/book-details/:id',
-                element: <BookDetails />,
+                element: (
+                    <PrivateRoute>
+                        <BookDetails />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: '/book/edit/:id',

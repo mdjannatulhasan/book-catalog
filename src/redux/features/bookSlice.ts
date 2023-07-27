@@ -12,6 +12,7 @@ const initialState: IBookState = {
     priceRange: 0,
     books: [
         {
+            code: '01',
             title: 'The Lord of the Rings: The Fellowship of the Ring',
             coverImage:
                 'https://i.ibb.co/8sHXH7s/fellowship-of-the-ring-illustration-johan-egerkrans.jpg',

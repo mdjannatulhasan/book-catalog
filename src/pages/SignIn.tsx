@@ -9,19 +9,29 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 import BtnPrimary from '@/components/common/BtnPrimary';
-import { FormEvent } from 'react';
+import { FormEvent, useEffect } from 'react';
 import { useLoginUserMutation } from '@/redux/features/user/userApi';
 import { useToast } from '@/components/ui/use-toast';
-import { useAppDispatch } from '@/redux/hook';
+import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { setUser } from '@/redux/features/user/userSlice';
 
 const SignIn = () => {
     const [loginUser, { error }] = useLoginUserMutation();
     const { toast } = useToast();
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const { email } = useAppSelector((state) => state.user);
+    const { state } = useLocation();
+    console.log(state);
+
+    useEffect(() => {
+        if (email) {
+            navigate(state && state.path ? state.path : '/');
+        }
+    }, [email]);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -43,7 +53,7 @@ const SignIn = () => {
                 toast({
                     variant: 'success',
                     title: 'Login successfull.',
-                    description: 'Redirecting......',
+                    description: '',
                 });
             } else {
                 const errorMessage =
@@ -76,7 +86,7 @@ const SignIn = () => {
             </Link>
             <Tabs defaultValue="account" className="max-w-[400px] w-full mt-5">
                 <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="account">Sign Up</TabsTrigger>
+                    <TabsTrigger value="account">Sign In</TabsTrigger>
                     <TabsTrigger value="password">New User?</TabsTrigger>
                 </TabsList>
                 <TabsContent value="account">

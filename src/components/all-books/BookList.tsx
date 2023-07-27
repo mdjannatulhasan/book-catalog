@@ -17,8 +17,10 @@ const BookList = () => {
             genre,
             publicationDate,
             author,
+            code,
         }: IBook) => (
             <Book
+                code={code}
                 title={title}
                 coverImage={coverImage}
                 price={price}
