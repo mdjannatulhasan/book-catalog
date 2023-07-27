@@ -15,18 +15,21 @@ import BtnPrimary from '@/components/common/BtnPrimary';
 import { FormEvent } from 'react';
 import { useLoginUserMutation } from '@/redux/features/user/userApi';
 import { useToast } from '@/components/ui/use-toast';
+import { useAppDispatch } from '@/redux/hook';
+import { setUser } from '@/redux/features/user/userSlice';
 
 const SignIn = () => {
     const [loginUser, { isLoading, error, data }] = useLoginUserMutation();
     const { toast } = useToast();
+    const dispatch = useAppDispatch();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const email = (e.target as HTMLFormElement).email.value;
         const body = {
-            email: (e.target as HTMLFormElement).email.value,
+            email: email,
             password: (e.target as HTMLFormElement).password.value,
         };
-        console.log(body);
 
         try {
             const response = await loginUser({ data: body });
@@ -35,6 +38,8 @@ const SignIn = () => {
             if ('data' in response) {
                 const token = response.data.data.accessToken;
                 localStorage.setItem('token', token);
+                localStorage.setItem('email', email);
+                dispatch(setUser(email));
                 toast({
                     variant: 'success',
                     title: 'Login successfull.',
@@ -46,6 +51,8 @@ const SignIn = () => {
                         ? (response.error.data as { message: string })?.message
                         : 'Something Went Wrong';
                 localStorage.removeItem('token');
+                localStorage.removeItem('email');
+                dispatch(setUser(''));
                 toast({
                     variant: 'destructive',
                     title: 'Uh oh! Login Failed.',
