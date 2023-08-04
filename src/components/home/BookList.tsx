@@ -3,6 +3,7 @@ import Container from '../common/Container';
 import SecTitle from '../common/SecTitle';
 import SubTitle from '../common/SubTitle';
 import Product from './Product';
+import BtnPrimary from '../common/BtnPrimary';
 
 const BookList = () => {
     const ar = [
@@ -226,6 +227,11 @@ const BookList = () => {
 
                     <div className="grid lg:grid-cols-5 md:grid-cols-2 grid-cols-2 max-[460px]:grid-cols-1 gap-6 mt-6">
                         {bookItems}
+                    </div>
+                    <div className="mt-5">
+                        <BtnPrimary to="/books" link>
+                            Explore More
+                        </BtnPrimary>
                     </div>
                 </div>
             </Container>

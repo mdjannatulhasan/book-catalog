@@ -10,10 +10,10 @@ const Hero = () => {
         <section className="pt-6 pb-12">
             <div className="container">
                 <div className="flex flex-col items-center">
-                    <h1 className="text-5xl font-semibold leading-snug text-center">
+                    <h1 className="lg:text-5xl text-3xl font-semibold leading-snug text-center">
                         Our Collection
                     </h1>
-                    <p className="my-3 text-2xl max-w-[800px] text-center">
+                    <p className="my-3 lg:text-2xl text-xl max-w-[800px] text-center">
                         Explore a vast tapestry of enchanting stories across
                         genres, and immerse yourself in our literary odyssey -
                         All Books await your discovery.

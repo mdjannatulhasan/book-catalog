@@ -57,3 +57,12 @@ body * {
 .link:hover * {
     color: #19509d !important;
 }
+@media (min-width: 1024px) {
+    .lg\:text-5xl {
+        font-size: 3rem;
+        line-height: 1.3 !important;
+    }
+}
+.text-5xl {
+    line-height: 1.3 !important;
+}

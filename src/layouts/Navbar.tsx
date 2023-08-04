@@ -69,10 +69,10 @@ const Navbar = () => {
                                     </SheetTrigger>
                                     <SheetContent className="bg-red-500">
                                         <SheetHeader>
-                                            <SheetTitle className="text-2xl">
+                                            <SheetTitle className="lg:text-2xl text-xl">
                                                 Bookish Pathways
                                             </SheetTitle>
-                                            <SheetDescription className="text-lg">
+                                            <SheetDescription className="lg:text-lg text-md">
                                                 Unleash Your Imagination,
                                                 Explore Boundless Stories with
                                                 us. Here are our main pages for
@@ -80,7 +80,7 @@ const Navbar = () => {
                                             </SheetDescription>
                                         </SheetHeader>
 
-                                        <div className="mt-7 text-xl font-semibold">
+                                        <div className="mt-7 lg:text-xl text-lg font-semibold">
                                             <ul className="flex flex-col gap-4">
                                                 <li>
                                                     <NavLink to="/">
@@ -101,7 +101,7 @@ const Navbar = () => {
                                                     </NavLink>
                                                 </li>
                                                 <li className="">
-                                                    <NavLink to="/add-book">
+                                                    <NavLink to="/add-new-book">
                                                         <GiNotebook />
                                                         <SheetClose asChild>
                                                             <span>

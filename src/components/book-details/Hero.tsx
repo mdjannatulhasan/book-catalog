@@ -1,22 +1,26 @@
-import heroImg from '../../assets/images/addBook.jpg';
+import { useAppSelector } from '@/redux/hook';
+import { IBook } from '@/types/homeType';
 
 const Hero = () => {
+    const singleBook = useAppSelector(
+        (state) => state.book.singleBook
+    ) as IBook;
+
     return (
         <section
             style={{
-                backgroundImage: `url(${heroImg})`,
+                backgroundImage: `url(${singleBook?.coverImage})`,
             }}
             className="relative bg-cover bg-center"
         >
             <div className="container py-24 relative z-10">
                 <div className=" max-w-[700px]">
                     <div>
-                        <h1 className="text-5xl font-semibold leading-snug text-[#eaeaea]">
-                            Share Your Literary Treasures
+                        <h1 className="lg:text-5xl text-3xl font-semibold leading-normal text-[#eaeaea]">
+                            {singleBook?.title}
                         </h1>
                         <p className="my-5 text-2xl text-[#eaeaea]">
-                            Enchant our catalog with your enthralling books,
-                            enriching minds with captivating tales. Join now
+                            By {singleBook?.author}
                         </p>
                     </div>
                 </div>

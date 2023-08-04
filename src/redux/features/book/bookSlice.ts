@@ -5,6 +5,8 @@ interface IBookState {
     status: boolean;
     priceRange: number;
     books: IBook[];
+    singleBook: IBook | null;
+    loading: boolean;
 }
 
 const initialState: IBookState = {
@@ -207,6 +209,8 @@ const initialState: IBookState = {
             reviews: 5123,
         },
     ],
+    singleBook: null,
+    loading: false,
 };
 
 const bookSlice = createSlice({
@@ -216,9 +220,15 @@ const bookSlice = createSlice({
         toggleState: (state) => {
             state.status = !state.status;
         },
+        setSingleBook: (state, action) => {
+            state.singleBook = action.payload?.data;
+        },
+        setLoading: (state, action) => {
+            state.loading = action.payload;
+        },
     },
 });
 
-export const { toggleState } = bookSlice.actions;
+export const { toggleState, setSingleBook, setLoading } = bookSlice.actions;
 
 export default bookSlice.reducer;

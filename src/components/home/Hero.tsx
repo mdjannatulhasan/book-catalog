@@ -11,10 +11,10 @@ const Hero = () => {
             <div className="container py-36 relative z-10">
                 <div className=" max-w-[700px]">
                     <div>
-                        <h1 className="text-5xl font-semibold leading-snug text-[#eaeaea]">
+                        <h1 className="lg:text-5xl text-3xl font-semibold leading-snug text-[#eaeaea]">
                             Journey Through the Pages of Knowledge
                         </h1>
-                        <p className="my-5 text-2xl text-[#eaeaea]">
+                        <p className="my-5 lg:text-2xl text-xl text-[#eaeaea]">
                             Step into a boundless universe of captivating
                             stories. Immerse yourself in the magic of books,
                             where imagination knows no limits. Explore, escape,
