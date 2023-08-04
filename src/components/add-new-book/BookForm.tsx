@@ -8,18 +8,20 @@ import { useCreateBookMutation } from '@/redux/features/book/bookApi';
 import { useToast } from '../ui/use-toast';
 import { useAppDispatch } from '@/redux/hook';
 import { handleLogout } from '@/redux/features/user/userSlice';
+import { useNavigate } from 'react-router-dom';
 
 const BookForm = () => {
     const [createBook, { error, isLoading }] = useCreateBookMutation();
     const { toast } = useToast();
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formElement = e.currentTarget as HTMLFormElement;
         const data = {
-            code: formElement.code.value,
-            coverImage: formElement.coverImage.value,
+            code: formElement.code.value || '#',
+            coverImage: formElement.coverImage.value || '#',
             title: formElement.title.value,
             price: parseFloat(formElement.price.value),
             author: formElement.author.value,
@@ -38,6 +40,7 @@ const BookForm = () => {
                     title: 'Book added successfully.',
                     description: '',
                 });
+                navigate('/books');
             } else {
                 const errorMessage =
                     'data' in response.error
@@ -114,6 +117,7 @@ const BookForm = () => {
                                     type="number"
                                     name="price"
                                     placeholder="Enter the book price"
+                                    defaultValue={0}
                                 />
                             </div>
                             <div className="">

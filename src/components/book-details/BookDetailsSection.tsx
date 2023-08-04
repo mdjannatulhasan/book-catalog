@@ -3,13 +3,21 @@ import Container from '../common/Container';
 import { useAppSelector } from '@/redux/hook';
 import { usePalette } from 'color-thief-react';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GiHouse } from 'react-icons/gi';
+import { useDeleteBookMutation } from '@/redux/features/book/bookApi';
+import { useToast } from '../ui/use-toast';
+import { useDispatch } from 'react-redux';
+import { handleLogout } from '@/redux/features/user/userSlice';
 
 const BookDetailsSection = () => {
     const singleBook = useAppSelector(
         (state) => state.book.singleBook
     ) as IBookWithId;
+
+    const navigate = useNavigate();
+    const { toast } = useToast();
+    const dispatch = useDispatch();
     const [palette, setPalette] = useState([]);
 
     const { data, error, loading } = usePalette(
@@ -23,7 +31,39 @@ const BookDetailsSection = () => {
         setPalette(data as never);
     }, [data]);
 
-    console.log(palette);
+    const [deleteBook, { isLoading }] = useDeleteBookMutation();
+
+    const handleDelete = async () => {
+        try {
+            const response = await deleteBook(singleBook?._id);
+            console.log(response);
+            if ('data' in response) {
+                toast({
+                    variant: 'success',
+                    title: 'Book deleted successfully.',
+                    description: '',
+                });
+                navigate(`/books`);
+            } else {
+                toast({
+                    variant: 'destructive',
+                    title: 'Book delete Failed.',
+                    description: ``,
+                });
+                if (response.error.status == 401) {
+                    dispatch(handleLogout());
+                }
+            }
+        } catch (e) {
+            console.log(error);
+
+            toast({
+                variant: 'destructive',
+                title: 'Delete Failed.',
+                description: 'There was a problem with your request.',
+            });
+        }
+    };
 
     return (
         <section className="pb-12">
@@ -112,37 +152,40 @@ const BookDetailsSection = () => {
                                     </p>
                                 </div>
                             </div>
-                            <div className="w-full round flex justify-start gap-4">
+                            <div className="w-full round flex justify-start gap-4 mt-3">
                                 <Link
                                     to={`/book/edit/${singleBook?._id}`}
                                     className={`text-[white] py-2 px-5 rounded-md text-center max-w-[300px]'
                                 } w-full block font-medium`}
                                     style={{
-                                        backgroundImage: `linear-gradient(to bottom right, ${
-                                            palette && palette[0]
+                                        backgroundImage: `linear-gradient(to top left, ${
+                                            palette ? palette[0] : '#4397ee'
                                         }, ${
-                                            palette &&
-                                            palette[palette.length - 1]
+                                            palette
+                                                ? palette[palette.length - 1]
+                                                : '#4397ee'
                                         })`,
                                     }}
                                 >
                                     Edit
                                 </Link>
-                                <Link
-                                    to=""
+                                <button
+                                    onClick={handleDelete}
+                                    disabled={isLoading}
                                     className={` text-[white] py-2 px-5 rounded-md text-center max-w-[300px]'
                                 } w-full block font-medium`}
                                     style={{
                                         backgroundImage: `linear-gradient(to top left, ${
-                                            palette && palette[0]
+                                            palette ? palette[0] : '#4397ee'
                                         }, ${
-                                            palette &&
-                                            palette[palette.length - 1]
+                                            palette
+                                                ? palette[palette.length - 1]
+                                                : '#4397ee'
                                         })`,
                                     }}
                                 >
                                     Delete
-                                </Link>
+                                </button>
                             </div>
                         </div>
                     </div>

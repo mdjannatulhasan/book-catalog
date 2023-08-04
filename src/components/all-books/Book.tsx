@@ -12,7 +12,7 @@ const Book = ({
 }: IBook) => {
     return (
         <div className="shadow p-4 rounded-md relative">
-            {coverImage && (
+            {coverImage && coverImage != '#' && (
                 <Link to={`/book-details/${code}`}>
                     <img
                         src={coverImage}
@@ -24,9 +24,11 @@ const Book = ({
             <div className="mt-4 flex flex-col gap-2 items-start">
                 <p className="text-[#F77F00]">{genre}</p>
 
-                <h3 className="font-semibold text-lg -mt-1 leading-snug">
-                    {title}
-                </h3>
+                <Link to={`/book-details/${code}`}>
+                    <h3 className="font-semibold text-lg -mt-1 leading-snug">
+                        {title}
+                    </h3>
+                </Link>
                 <p className="text-blue-600 font-medium">${price}</p>
                 <p className="font-medium">{publicationDate}</p>
                 <p className="font-medium">{author}</p>
