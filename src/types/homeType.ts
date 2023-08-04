@@ -6,7 +6,7 @@ export type IBook = {
     genre: string;
     author?: string;
     publicationDate?: string;
-    reviews?: number;
+    reviews?: string[];
 };
 export type IBookWithId = IBook & {
     _id: string;

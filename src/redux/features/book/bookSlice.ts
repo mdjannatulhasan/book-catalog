@@ -7,6 +7,7 @@ interface IBookState {
     books: IBook[];
     singleBook: IBook | null;
     loading: boolean;
+    reviews: string[];
 }
 
 const initialState: IBookState = {
@@ -22,7 +23,6 @@ const initialState: IBookState = {
             author: 'J.R.R. Tolkien',
             genre: 'Fantasy',
             publicationDate: 'July 29, 1954',
-            reviews: 4352,
         },
         {
             title: 'The Lord of the Rings: The Two Towers',
@@ -32,7 +32,6 @@ const initialState: IBookState = {
             author: 'J.R.R. Tolkien',
             genre: 'Adventure',
             publicationDate: 'November 11, 1954',
-            reviews: 3927,
         },
         {
             title: 'The Lord of the Rings: The Return of the King',
@@ -42,7 +41,6 @@ const initialState: IBookState = {
             author: 'J.R.R. Tolkien',
             genre: 'Fantasy',
             publicationDate: 'October 20, 1955',
-            reviews: 4123,
         },
         {
             title: "Harry Potter and the Sorcerer's Stone",
@@ -51,7 +49,6 @@ const initialState: IBookState = {
             author: 'J.K. Rowling',
             genre: 'Fantasy',
             publicationDate: 'June 26, 1997',
-            reviews: 8246,
         },
         {
             title: 'Harry Potter and the Chamber of Secrets',
@@ -61,7 +58,6 @@ const initialState: IBookState = {
             author: 'J.K. Rowling',
             genre: 'Fantasy',
             publicationDate: 'July 2, 1998',
-            reviews: 7513,
         },
         {
             title: 'Harry Potter and the Prisoner of Azkaban',
@@ -70,7 +66,6 @@ const initialState: IBookState = {
             author: 'J.K. Rowling',
             genre: 'Adventure',
             publicationDate: 'July 8, 1999',
-            reviews: 6901,
         },
         {
             title: 'Harry Potter and the Goblet of Fire',
@@ -80,7 +75,6 @@ const initialState: IBookState = {
             author: 'J.K. Rowling',
             genre: 'Fantasy',
             publicationDate: 'July 8, 2000',
-            reviews: 8235,
         },
         {
             title: 'Harry Potter and the Order of the Phoenix',
@@ -89,7 +83,6 @@ const initialState: IBookState = {
             author: 'J.K. Rowling',
             genre: 'Fantasy',
             publicationDate: 'June 21, 2003',
-            reviews: 7523,
         },
         {
             title: 'Harry Potter and the Half-Blood Prince',
@@ -98,7 +91,6 @@ const initialState: IBookState = {
             author: 'J.K. Rowling',
             genre: 'Thriller',
             publicationDate: 'July 16, 2005',
-            reviews: 6743,
         },
         {
             title: 'Harry Potter and the Deathly Hallows',
@@ -107,7 +99,6 @@ const initialState: IBookState = {
             author: 'J.K. Rowling',
             genre: 'Fantasy',
             publicationDate: 'July 21, 2007',
-            reviews: 8372,
         },
         {
             title: 'To Kill a Mockingbird',
@@ -116,7 +107,6 @@ const initialState: IBookState = {
             author: 'Harper Lee',
             genre: 'Classic',
             publicationDate: 'July 11, 1960',
-            reviews: 5379,
         },
         {
             title: '1984',
@@ -125,7 +115,6 @@ const initialState: IBookState = {
             author: 'George Orwell',
             genre: 'Dystopian',
             publicationDate: 'June 8, 1949',
-            reviews: 6215,
         },
         {
             title: 'The Great Gatsby',
@@ -134,7 +123,6 @@ const initialState: IBookState = {
             author: 'F. Scott Fitzgerald',
             genre: 'Literary Fiction',
             publicationDate: 'April 10, 1925',
-            reviews: 4876,
         },
         {
             title: 'Pride and Prejudice',
@@ -143,7 +131,6 @@ const initialState: IBookState = {
             author: 'Jane Austen',
             genre: 'Romance',
             publicationDate: 'January 28, 1813',
-            reviews: 5423,
         },
         {
             title: 'The Martian',
@@ -152,7 +139,6 @@ const initialState: IBookState = {
             author: 'Andy Weir',
             genre: 'Science Fiction',
             publicationDate: 'February 11, 2014',
-            reviews: 3891,
         },
         {
             title: 'Gone Girl',
@@ -161,7 +147,6 @@ const initialState: IBookState = {
             author: 'Gillian Flynn',
             genre: 'Mystery',
             publicationDate: 'May 24, 2012',
-            reviews: 4265,
         },
         {
             title: 'Educated',
@@ -170,7 +155,6 @@ const initialState: IBookState = {
             author: 'Tara Westover',
             genre: 'Memoir',
             publicationDate: 'February 20, 2018',
-            reviews: 3648,
         },
         {
             title: 'The Night Circus',
@@ -179,7 +163,6 @@ const initialState: IBookState = {
             author: 'Erin Morgenstern',
             genre: 'Fantasy',
             publicationDate: 'September 13, 2011',
-            reviews: 4187,
         },
         {
             title: 'The Girl with the Dragon Tattoo',
@@ -188,7 +171,6 @@ const initialState: IBookState = {
             author: 'Stieg Larsson',
             genre: 'Thriller',
             publicationDate: 'August 16, 2005',
-            reviews: 4826,
         },
         {
             title: 'The Alchemist',
@@ -197,7 +179,6 @@ const initialState: IBookState = {
             author: 'Paulo Coelho',
             genre: 'Philosophical Fiction',
             publicationDate: '1988',
-            reviews: 5763,
         },
         {
             title: 'The Da Vinci Code',
@@ -206,11 +187,11 @@ const initialState: IBookState = {
             author: 'Dan Brown',
             genre: 'Mystery',
             publicationDate: 'March 18, 2003',
-            reviews: 5123,
         },
     ],
     singleBook: null,
     loading: false,
+    reviews: [],
 };
 
 const bookSlice = createSlice({
@@ -226,9 +207,13 @@ const bookSlice = createSlice({
         setLoading: (state, action) => {
             state.loading = action.payload;
         },
+        setReview: (state, action) => {
+            state.reviews = action.payload?.data;
+        },
     },
 });
 
-export const { toggleState, setSingleBook, setLoading } = bookSlice.actions;
+export const { toggleState, setSingleBook, setLoading, setReview } =
+    bookSlice.actions;
 
 export default bookSlice.reducer;

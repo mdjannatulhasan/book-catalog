@@ -10,9 +10,6 @@ import { IBookWithId } from '@/types/homeType';
 const BookList = () => {
     const { data, error, isLoading } = useGetBooksQuery(undefined);
 
-    console.log(data);
-    console.log(isLoading);
-
     let bookItems;
     if (data?.data) {
         bookItems = data.data.map(

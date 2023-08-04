@@ -9,6 +9,7 @@ import { useDeleteBookMutation } from '@/redux/features/book/bookApi';
 import { useToast } from '../ui/use-toast';
 import { useDispatch } from 'react-redux';
 import { handleLogout } from '@/redux/features/user/userSlice';
+import Reviews from './Reviews';
 
 const BookDetailsSection = () => {
     const singleBook = useAppSelector(
@@ -142,13 +143,12 @@ const BookDetailsSection = () => {
                                         {singleBook?.publicationDate}
                                     </p>
                                 </div>
-                                <div className="grid grid-cols-3 gap-4 items-center">
+                                <div className="grid grid-cols-3 gap-4">
                                     <p className="col-span-1 text-lg font-medium">
                                         Reviews
                                     </p>
                                     <p className="col-span-2 text-lg">
-                                        {singleBook?.reviews ||
-                                            'No reviews yet'}
+                                        <Reviews id={singleBook?._id} />
                                     </p>
                                 </div>
                             </div>

@@ -1,5 +1,4 @@
 import BookDetailsSection from '@/components/book-details/BookDetailsSection';
-import Hero from '@/components/book-details/Hero';
 import { useGetSingleBookQuery } from '@/redux/features/book/bookApi';
 import { setLoading, setSingleBook } from '@/redux/features/book/bookSlice';
 import { useAppDispatch } from '@/redux/hook';

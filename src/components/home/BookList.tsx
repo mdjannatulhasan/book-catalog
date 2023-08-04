@@ -1,9 +1,11 @@
-import { IBook } from '@/types/homeType';
+import { IBook, IBookWithId } from '@/types/homeType';
 import Container from '../common/Container';
 import SecTitle from '../common/SecTitle';
 import SubTitle from '../common/SubTitle';
 import Product from './Product';
 import BtnPrimary from '../common/BtnPrimary';
+import { useGetBooksQuery } from '@/redux/features/book/bookApi';
+import Book from '../all-books/Book';
 
 const BookList = () => {
     const ar = [
@@ -203,16 +205,35 @@ const BookList = () => {
         },
     ] as IBook[];
 
-    const bookItems = ar
-        .slice(0, 10)
-        .map(({ title, coverImage, price, genre }: IBook) => (
-            <Product
-                title={title}
-                coverImage={coverImage}
-                price={price}
-                genre={genre}
-            />
-        ));
+    const { data, error, isLoading } = useGetBooksQuery(undefined);
+
+    let bookItems;
+    if (data?.data) {
+        bookItems = data.data
+            .slice(0, 10)
+            .map(
+                ({
+                    _id,
+                    title,
+                    coverImage,
+                    price,
+                    genre,
+                    publicationDate,
+                    author,
+                }: IBookWithId) => (
+                    <Book
+                        key={_id}
+                        code={_id}
+                        title={title}
+                        coverImage={coverImage}
+                        price={price}
+                        genre={genre}
+                        publicationDate={publicationDate}
+                        author={author}
+                    />
+                )
+            );
+    }
 
     return (
         <section className="py-12">
