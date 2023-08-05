@@ -204,7 +204,7 @@ const BookList = () => {
     //     },
     // ] as IBook[];
 
-    const { data, error, isLoading } = useGetBooksQuery(undefined);
+    const { data } = useGetBooksQuery(undefined);
 
     let bookItems;
     if (data?.data) {

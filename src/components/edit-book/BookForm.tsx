@@ -26,7 +26,7 @@ const BookForm = () => {
         const data = {
             code: formElement.code.value,
             coverImage: formElement.coverImage.value,
-            title: formElement.title.value,
+            title: formElement.bookTitle.value,
             price: parseFloat(formElement.price.value),
             author: formElement.author.value,
             genre: formElement.genre.value,
@@ -76,10 +76,16 @@ const BookForm = () => {
                     variant: 'destructive',
                     title: 'Book update Failed.',
                     description: `${errorMessage}${
-                        response.error.status != 401 ? `- ${errorMessages}` : ''
+                        'status' in response.error &&
+                        response.error.status != 401
+                            ? `- ${errorMessages}`
+                            : ''
                     } ${path && `'in' ${path}`}`,
                 });
-                if (response.error.status == 401) {
+                if (
+                    'status' in response.error &&
+                    response.error.status != 401
+                ) {
                     dispatch(handleLogout());
                 }
             }
@@ -107,7 +113,7 @@ const BookForm = () => {
                                 <div className="lg:col-span-2">
                                     <InputCustom
                                         type="text"
-                                        name="title"
+                                        name="bookTitle"
                                         placeholder="Enter book title"
                                         defaultValue={singleBook.title}
                                     />
