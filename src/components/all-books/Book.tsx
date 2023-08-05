@@ -1,6 +1,7 @@
 import { useCreateWishlistMutation } from '@/redux/features/wishlist/wishlistApi';
+import { useAppSelector } from '@/redux/hook';
 import { IBook } from '@/types/homeType';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GiHearts } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
@@ -15,6 +16,13 @@ const Book = ({
 }: IBook) => {
     const [heart, setHeart] = useState(false);
     const [createWishlist, { error }] = useCreateWishlistMutation();
+    const { wishlist } = useAppSelector((state) => state.wishlist);
+
+    useEffect(() => {
+        if (wishlist?.length && wishlist.some((item) => item['_id'] === code)) {
+            setHeart(true);
+        }
+    }, [wishlist]);
 
     const handleWishlist = async () => {
         console.log(code);

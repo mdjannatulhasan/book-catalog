@@ -24,7 +24,12 @@ const wishlistApi = api.injectEndpoints({
             invalidatesTags: ['wishlist'],
         }),
         getWishlists: builder.query({
-            query: () => '/wishlist',
+            query: () => ({
+                url: '/wishlist',
+                headers: {
+                    Authorization: `${localStorage.getItem('token')}`,
+                },
+            }),
             providesTags: ['wishlist'],
         }),
         getSingleWishlist: builder.query({

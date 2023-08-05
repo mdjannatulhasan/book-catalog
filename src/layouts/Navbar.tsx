@@ -11,7 +11,7 @@ import {
     SheetTrigger,
 } from '@/components/ui/sheet';
 import { LucideAlignRight } from 'lucide-react';
-import { GiBookCover, GiHouse, GiNotebook } from 'react-icons/gi';
+import { GiBookCover, GiHearts, GiHouse, GiNotebook } from 'react-icons/gi';
 import { BiLogIn, BiSolidUserPlus } from 'react-icons/bi';
 import NavLink from '@/components/common/NavLink';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
@@ -106,6 +106,16 @@ const Navbar = () => {
                                                         <SheetClose asChild>
                                                             <span>
                                                                 Add A Book
+                                                            </span>
+                                                        </SheetClose>
+                                                    </NavLink>
+                                                </li>
+                                                <li className="">
+                                                    <NavLink to="/wishlist">
+                                                        <GiHearts />
+                                                        <SheetClose asChild>
+                                                            <span>
+                                                                Wishlist
                                                             </span>
                                                         </SheetClose>
                                                     </NavLink>
