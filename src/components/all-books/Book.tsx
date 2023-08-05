@@ -1,4 +1,7 @@
+import { useCreateWishlistMutation } from '@/redux/features/wishlist/wishlistApi';
 import { IBook } from '@/types/homeType';
+import { useState } from 'react';
+import { GiHearts } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
 const Book = ({
@@ -10,17 +13,40 @@ const Book = ({
     author,
     code = '#',
 }: IBook) => {
+    const [heart, setHeart] = useState(false);
+    const [createWishlist, { error }] = useCreateWishlistMutation();
+
+    const handleWishlist = async () => {
+        console.log(code);
+
+        const response = await createWishlist(code);
+        console.log(response);
+    };
+
     return (
         <div className="shadow p-4 rounded-md relative">
-            {coverImage && coverImage != '#' && (
-                <Link to={`/book-details/${code}`}>
-                    <img
-                        src={coverImage}
-                        alt={`${title} book cover`}
-                        className="lg:max-w-sm w-full rounded-md"
-                    />
-                </Link>
-            )}
+            <div>
+                {coverImage && coverImage != '#' && (
+                    <Link to={`/book-details/${code}`}>
+                        <img
+                            src={coverImage}
+                            alt={`${title} book cover`}
+                            className="lg:max-w-sm w-full rounded-md"
+                        />
+                    </Link>
+                )}
+            </div>
+            <div
+                className={`absolute top-6 right-6 ${
+                    heart ? 'text-[#cf0c09]' : 'text-white'
+                } bg-[#ffd2d1] rounded-md p-1 hover:cursor-pointer`}
+                onClick={() => {
+                    setHeart(!heart);
+                    handleWishlist();
+                }}
+            >
+                <GiHearts />
+            </div>
             <div className="mt-4 flex flex-col gap-2 items-start">
                 <p className="text-[#F77F00]">{genre}</p>
 
