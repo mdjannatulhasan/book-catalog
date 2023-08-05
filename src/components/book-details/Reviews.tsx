@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     useGetReviewsQuery,
     useSetReviewsMutation,
@@ -19,8 +20,7 @@ export default function Reviews({ id }: { id: string }) {
 
     const { toast } = useToast();
 
-    const [setReviews, { error, isLoading: reviewsLoading }] =
-        useSetReviewsMutation();
+    const [setReviews, { error }] = useSetReviewsMutation();
 
     useEffect(() => {
         dispatch(setReview(data));
@@ -75,10 +75,16 @@ export default function Reviews({ id }: { id: string }) {
                     variant: 'destructive',
                     title: 'Review add Failed.',
                     description: `${errorMessage}${
-                        response.error.status != 401 ? `- ${errorMessages}` : ''
+                        'status' in response.error &&
+                        response.error.status != 401
+                            ? `- ${errorMessages}`
+                            : ''
                     } ${path && `'in' ${path}`}`,
                 });
-                if (response.error.status == 401) {
+                if (
+                    'status' in response.error &&
+                    response.error.status != 401
+                ) {
                     dispatch(handleLogout());
                 }
             }

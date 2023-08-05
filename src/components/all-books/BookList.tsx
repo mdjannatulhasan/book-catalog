@@ -8,7 +8,7 @@ import { Skeleton } from '../ui/skeleton';
 import { IBookWithId } from '@/types/homeType';
 
 const BookList = () => {
-    const { data, error, isLoading } = useGetBooksQuery(undefined);
+    const { data, isLoading } = useGetBooksQuery(undefined);
 
     let bookItems;
     if (data?.data) {

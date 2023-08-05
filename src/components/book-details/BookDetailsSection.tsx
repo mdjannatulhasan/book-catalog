@@ -1,4 +1,4 @@
-import { IBook, IBookWithId } from '@/types/homeType';
+import { IBookWithId } from '@/types/homeType';
 import Container from '../common/Container';
 import { useAppSelector } from '@/redux/hook';
 import { usePalette } from 'color-thief-react';
@@ -21,12 +21,9 @@ const BookDetailsSection = () => {
     const dispatch = useDispatch();
     const [palette, setPalette] = useState([]);
 
-    const { data, error, loading } = usePalette(
-        singleBook?.coverImage,
-        4,
-        'hex',
-        { crossOrigin: 'anonymous' }
-    );
+    const { data, error } = usePalette(singleBook?.coverImage, 4, 'hex', {
+        crossOrigin: 'anonymous',
+    });
 
     useEffect(() => {
         setPalette(data as never);
@@ -51,7 +48,10 @@ const BookDetailsSection = () => {
                     title: 'Book delete Failed.',
                     description: ``,
                 });
-                if (response.error.status == 401) {
+                if (
+                    'status' in response.error &&
+                    response.error.status != 401
+                ) {
                     dispatch(handleLogout());
                 }
             }
