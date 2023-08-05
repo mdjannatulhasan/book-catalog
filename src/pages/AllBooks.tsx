@@ -12,6 +12,7 @@ const AllBooks = () => {
     useEffect(() => {
         dispatch(setWishlist(data));
     }, [data]);
+
     return (
         <>
             <Hero />

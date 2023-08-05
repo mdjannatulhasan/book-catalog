@@ -1,7 +1,5 @@
-import { useCreateWishlistMutation } from '@/redux/features/wishlist/wishlistApi';
-import { useAppSelector } from '@/redux/hook';
+import { useWishlist } from '@/lib/hooks/useWishlist';
 import { IBook } from '@/types/homeType';
-import { useEffect, useState } from 'react';
 import { GiHearts } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
@@ -14,22 +12,7 @@ const Book = ({
     author,
     code = '#',
 }: IBook) => {
-    const [heart, setHeart] = useState(false);
-    const [createWishlist, { error }] = useCreateWishlistMutation();
-    const { wishlist } = useAppSelector((state) => state.wishlist);
-
-    useEffect(() => {
-        if (wishlist?.length && wishlist.some((item) => item['_id'] === code)) {
-            setHeart(true);
-        }
-    }, [wishlist]);
-
-    const handleWishlist = async () => {
-        console.log(code);
-
-        const response = await createWishlist(code);
-        console.log(response);
-    };
+    const { handleWishlist, heart, setHeart } = useWishlist(code);
 
     return (
         <div className="shadow p-4 rounded-md relative">
@@ -67,9 +50,6 @@ const Book = ({
                 <p className="font-medium">{publicationDate}</p>
                 <p className="font-medium">{author}</p>
             </div>
-            {/* <p className="text-blue-700 bg-[#ffffffd5] px-3 rounded-md absolute top-8 left-8">
-                {genre}
-            </p> */}
         </div>
     );
 };
