@@ -23,6 +23,17 @@ const wishlistApi = api.injectEndpoints({
             }),
             invalidatesTags: ['wishlist'],
         }),
+        updateReadinglist: builder.mutation({
+            query: ({ data }) => ({
+                headers: {
+                    Authorization: `${localStorage.getItem('token')}`,
+                },
+                url: `/wishlist/list`,
+                method: 'POST',
+                body: data,
+            }),
+            invalidatesTags: ['wishlist'],
+        }),
         getWishlists: builder.query({
             query: () => ({
                 url: '/wishlist',
@@ -69,4 +80,5 @@ export const {
     useDeleteWishlistMutation,
     useGetReviewsQuery,
     useSetReviewsMutation,
+    useUpdateReadinglistMutation,
 } = wishlistApi;
