@@ -2,6 +2,7 @@ import SecTitle from '@/components/common/SecTitle';
 import CurrentlyReading from '@/components/wishlist/CurrentlyReading';
 import FinishedReading from '@/components/wishlist/FinishedReading';
 import FutureRead from '@/components/wishlist/FutureRead';
+import Hero from '@/components/wishlist/Hero';
 import { useGetBooksQuery } from '@/redux/features/book/bookApi';
 import { useGetWishlistsQuery } from '@/redux/features/wishlist/wishlistApi';
 import {
@@ -26,7 +27,8 @@ const Wishlist = () => {
 
     return (
         <>
-            <section className="pb-16 pt-8">
+            <Hero />
+            <section className="pb-8 pt-12">
                 <div className="container max-w-[800px] mx-auto">
                     <div className="mb-6">
                         <SecTitle>My Wishlist</SecTitle>

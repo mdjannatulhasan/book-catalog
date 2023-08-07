@@ -32,7 +32,7 @@ const CurrentlyReading = ({ books }: { books: any }) => {
     };
 
     return (
-        <section className="pb-16 pt-8">
+        <section className="py-8">
             <div className="container max-w-[800px] mx-auto">
                 <div className="flex justify-between items-center">
                     <SecTitle>Currently Reading</SecTitle>
