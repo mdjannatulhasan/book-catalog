@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/redux/hook';
 import { useEffect } from 'react';
 
 export default function Home() {
-    const { data, isLoading } = useGetWishlistsQuery(undefined);
+    const { data } = useGetWishlistsQuery(undefined);
     const dispatch = useAppDispatch();
 
     useEffect(() => {

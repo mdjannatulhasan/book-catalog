@@ -6,7 +6,7 @@ import { useAppDispatch } from '@/redux/hook';
 import { useEffect } from 'react';
 
 const AllBooks = () => {
-    const { data, isLoading } = useGetWishlistsQuery(undefined);
+    const { data } = useGetWishlistsQuery(undefined);
     const dispatch = useAppDispatch();
 
     useEffect(() => {

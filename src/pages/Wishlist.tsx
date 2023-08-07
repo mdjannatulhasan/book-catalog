@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { useEffect } from 'react';
 
 const Wishlist = () => {
-    const { data, isLoading } = useGetWishlistsQuery(undefined);
+    const { data } = useGetWishlistsQuery(undefined);
     const dispatch = useAppDispatch();
     const { wishlist } = useAppSelector((state) => state.wishlist);
 

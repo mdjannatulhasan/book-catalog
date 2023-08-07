@@ -1,4 +1,4 @@
-import { IBook, IBookWithId } from '@/types/homeType';
+import { IBookWithId } from '@/types/homeType';
 import { createSlice } from '@reduxjs/toolkit';
 
 interface IWishlistState {
