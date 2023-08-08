@@ -13,7 +13,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
 import BtnPrimary from '@/components/common/BtnPrimary';
 import { setUser } from '@/redux/features/user/userSlice';
-import { FormEvent, useEffect } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { useToast } from '@/components/ui/use-toast';
 import {
@@ -23,13 +23,14 @@ import {
 
 const SignUp = () => {
     const [createUser, { error }] = useAddUserMutation();
-    const [loginUser, { error: loginError }] = useLoginUserMutation();
+    const [loginUser] = useLoginUserMutation();
     const { toast } = useToast();
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const { email } = useAppSelector((state) => state.user);
     const { state } = useLocation();
-    console.log(state);
+    const [password, setPassword] = useState('');
+    const [retypePass, setRetypePassword] = useState('');
 
     useEffect(() => {
         if (email) {
@@ -42,7 +43,7 @@ const SignUp = () => {
         const email = (e.target as HTMLFormElement).email.value;
         const body = {
             email: email,
-            password: (e.target as HTMLFormElement).password.value,
+            password: password,
         };
 
         try {
@@ -110,12 +111,38 @@ const SignUp = () => {
                                     <Input id="email" type="email" />
                                 </div>
                                 <div className="space-y-1">
-                                    <Label htmlFor="username">Password</Label>
-                                    <Input id="password" type="password" />
+                                    <Label htmlFor="password">Password</Label>
+                                    <Input
+                                        id="password"
+                                        type="password"
+                                        onChange={(e) =>
+                                            setPassword(e.target.value)
+                                        }
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <Label htmlFor="retypePassword">
+                                        Retype Password
+                                    </Label>
+                                    <Input
+                                        className={`${
+                                            password !== retypePass &&
+                                            'bg-[#ffcece]'
+                                        }`}
+                                        onChange={(e) =>
+                                            setRetypePassword(e.target.value)
+                                        }
+                                        id="retypePassword"
+                                        type="password"
+                                    />
                                 </div>
                             </CardContent>
                             <CardFooter>
-                                <BtnPrimary fullWidth type="submit">
+                                <BtnPrimary
+                                    disabled={password !== retypePass}
+                                    fullWidth
+                                    type="submit"
+                                >
                                     Register
                                 </BtnPrimary>
                             </CardFooter>

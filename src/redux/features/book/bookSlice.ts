@@ -8,6 +8,8 @@ interface IBookState {
     singleBook: IBook | null;
     loading: boolean;
     reviews: string[];
+    isLoading: boolean;
+    count: number;
 }
 
 const initialState: IBookState = {
@@ -192,6 +194,8 @@ const initialState: IBookState = {
     singleBook: null,
     loading: false,
     reviews: [],
+    isLoading: false,
+    count: 0,
 };
 
 const bookSlice = createSlice({
@@ -210,10 +214,23 @@ const bookSlice = createSlice({
         setReview: (state, action) => {
             state.reviews = action.payload?.data;
         },
+        setBooks: (state, action) => {
+            state.books = action.payload?.data;
+            state.count = action.payload?.meta?.total;
+        },
+        setIsLoading: (state, action) => {
+            state.isLoading = action.payload;
+        },
     },
 });
 
-export const { toggleState, setSingleBook, setLoading, setReview } =
-    bookSlice.actions;
+export const {
+    toggleState,
+    setSingleBook,
+    setLoading,
+    setReview,
+    setBooks,
+    setIsLoading,
+} = bookSlice.actions;
 
 export default bookSlice.reducer;

@@ -33,7 +33,7 @@ const BtnPrimary = ({
             type={type}
             className={`bg-gradient-to-br from-blue-400 to-blue-600 hover:to-blue-800 text-[white] py-2 px-5 rounded-md ${
                 !fullWidth && 'max-w-[300px]'
-            } w-full block font-medium`}
+            } w-full block font-medium ${disabled && 'cursor-not-allowed'}`}
         >
             {children}
         </button>

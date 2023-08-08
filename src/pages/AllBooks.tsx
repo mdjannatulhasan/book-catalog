@@ -4,7 +4,6 @@ import { useGetWishlistsQuery } from '@/redux/features/wishlist/wishlistApi';
 import { setWishlist } from '@/redux/features/wishlist/wishlistSlice';
 import { useAppDispatch } from '@/redux/hook';
 import { useEffect } from 'react';
-
 const AllBooks = () => {
     const { data } = useGetWishlistsQuery(undefined);
     const dispatch = useAppDispatch();

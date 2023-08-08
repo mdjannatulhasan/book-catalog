@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react';
-import SecTitle from '../common/SecTitle';
 import { BiPlus } from 'react-icons/bi';
 import { useAppSelector } from '@/redux/hook';
 import { IBookWithId } from '@/types/homeType';
