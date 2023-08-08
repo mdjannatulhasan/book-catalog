@@ -35,12 +35,13 @@ const Wishlist = () => {
                     </div>
                     <div className="mt-6">
                         <ul>
-                            {wishlist?.length &&
-                                wishlist.map((item, index) => (
-                                    <li key={index} className="text-xl my-2">
-                                        {index + 1}. {item.title}
-                                    </li>
-                                ))}
+                            {wishlist?.length
+                                ? wishlist.map((item, index) => (
+                                      <li key={index} className="text-xl my-2">
+                                          {index + 1}. {item.title}
+                                      </li>
+                                  ))
+                                : 'No book added'}
                         </ul>
                     </div>
                 </div>

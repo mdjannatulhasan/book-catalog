@@ -25,7 +25,7 @@ const bookApi = api.injectEndpoints({
             invalidatesTags: ['book', 'books'],
         }),
         getBooks: builder.query({
-            query: () => '/books',
+            query: () => '/books/?limit=1000',
             providesTags: ['books'],
         }),
         getSingleBook: builder.query({
