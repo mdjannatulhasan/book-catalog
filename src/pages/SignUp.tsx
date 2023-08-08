@@ -22,7 +22,7 @@ import {
 } from '@/redux/features/user/userApi';
 
 const SignUp = () => {
-    const [createUser, { error }] = useAddUserMutation();
+    const [createUser, { error, isLoading }] = useAddUserMutation();
     const [loginUser] = useLoginUserMutation();
     const { toast } = useToast();
     const dispatch = useAppDispatch();
@@ -143,7 +143,9 @@ const SignUp = () => {
                                     fullWidth
                                     type="submit"
                                 >
-                                    Register
+                                    {isLoading
+                                        ? 'Registering. Please wait.....'
+                                        : 'Register'}
                                 </BtnPrimary>
                             </CardFooter>
                         </Card>
