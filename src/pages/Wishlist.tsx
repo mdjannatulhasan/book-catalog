@@ -11,6 +11,8 @@ import {
 } from '@/redux/features/wishlist/wishlistSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { useEffect } from 'react';
+import { BiPlus } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 const Wishlist = () => {
     const { data } = useGetWishlistsQuery(undefined);
@@ -35,13 +37,24 @@ const Wishlist = () => {
                     </div>
                     <div className="mt-6">
                         <ul>
-                            {wishlist?.length
-                                ? wishlist.map((item, index) => (
-                                      <li key={index} className="text-xl my-2">
-                                          {index + 1}. {item.title}
-                                      </li>
-                                  ))
-                                : 'No book added'}
+                            {wishlist?.length ? (
+                                wishlist.map((item, index) => (
+                                    <li key={index} className="text-xl my-2">
+                                        {index + 1}. {item.title}
+                                    </li>
+                                ))
+                            ) : (
+                                <div>
+                                    No book in the list.{' '}
+                                    <Link
+                                        to="/books"
+                                        className="text-blue-600 flex items-center gap-2"
+                                    >
+                                        Add one
+                                        <BiPlus />
+                                    </Link>
+                                </div>
+                            )}
                         </ul>
                     </div>
                 </div>
