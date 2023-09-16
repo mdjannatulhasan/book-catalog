@@ -9,8 +9,11 @@ function App() {
 
     useEffect(() => {
         const email = localStorage.getItem('email');
+        const id = localStorage.getItem('id');
+        const role = localStorage.getItem('role');
+
         if (email) {
-            dispatch(setUser(email));
+            dispatch(setUser({ email: email, id: id, role: role }));
         } else {
             dispatch(setUser(''));
             dispatch(removeWishlist());

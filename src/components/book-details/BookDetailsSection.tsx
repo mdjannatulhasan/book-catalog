@@ -16,6 +16,10 @@ const BookDetailsSection = () => {
         (state) => state.book.singleBook
     ) as IBookWithId;
 
+    const { id, role } = useAppSelector((state) => state.user);
+
+    console.log(id, role, singleBook?.addedBy);
+
     const navigate = useNavigate();
     const { toast } = useToast();
     const dispatch = useDispatch();
@@ -106,7 +110,7 @@ const BookDetailsSection = () => {
                                     </Link>
                                 </div>
                                 <h2 className="text-3xl font-semibold pb-3">
-                                    {singleBook?.title}
+                                    {singleBook?.title} <br />
                                 </h2>
                                 <div className="grid grid-cols-3 gap-4 items-center">
                                     <p className="col-span-1 text-lg font-medium">
@@ -151,42 +155,62 @@ const BookDetailsSection = () => {
                                         <Reviews id={singleBook?._id} />
                                     </p>
                                 </div>
+                                {singleBook?.status === 'pending' && (
+                                    <p className="text-[16px] font-normal text-[#ff5b5b]">
+                                        Your book status is{' '}
+                                        <strong>{singleBook?.status}</strong>.
+                                        One of our admin will review your
+                                        request. <br /> Till then you can't
+                                        delete or see your book on the homepage.
+                                    </p>
+                                )}
                             </div>
-                            <div className="w-full round flex justify-start gap-4 mt-3">
-                                <Link
-                                    to={`/book/edit/${singleBook?._id}`}
-                                    className={`text-[white] py-2 px-5 rounded-md text-center max-w-[300px]'
+                            {(singleBook?.addedBy === id ||
+                                role === 'admin') && (
+                                <div className="w-full round flex justify-start gap-4 mt-3">
+                                    <Link
+                                        to={`/book/edit/${singleBook?._id}`}
+                                        className={`text-[white] py-2 px-5 rounded-md text-center max-w-[300px]'
                                 } w-full block font-medium`}
-                                    style={{
-                                        backgroundImage: `linear-gradient(to top left, ${
-                                            palette ? palette[0] : '#4397ee'
-                                        }, ${
-                                            palette
-                                                ? palette[palette.length - 1]
-                                                : '#4397ee'
-                                        })`,
-                                    }}
-                                >
-                                    Edit
-                                </Link>
-                                <button
-                                    onClick={handleDelete}
-                                    disabled={isLoading}
-                                    className={` text-[white] py-2 px-5 rounded-md text-center max-w-[300px]'
+                                        style={{
+                                            backgroundImage: `linear-gradient(to top left, ${
+                                                palette ? palette[0] : '#4397ee'
+                                            }, ${
+                                                palette
+                                                    ? palette[
+                                                          palette.length - 1
+                                                      ]
+                                                    : '#4397ee'
+                                            })`,
+                                        }}
+                                    >
+                                        Edit
+                                    </Link>
+                                    {singleBook?.status !== 'pending' && (
+                                        <button
+                                            onClick={handleDelete}
+                                            disabled={isLoading}
+                                            className={` text-[white] py-2 px-5 rounded-md text-center max-w-[300px]'
                                 } w-full block font-medium`}
-                                    style={{
-                                        backgroundImage: `linear-gradient(to top left, ${
-                                            palette ? palette[0] : '#4397ee'
-                                        }, ${
-                                            palette
-                                                ? palette[palette.length - 1]
-                                                : '#4397ee'
-                                        })`,
-                                    }}
-                                >
-                                    Delete
-                                </button>
-                            </div>
+                                            style={{
+                                                backgroundImage: `linear-gradient(to top left, ${
+                                                    palette
+                                                        ? palette[0]
+                                                        : '#4397ee'
+                                                }, ${
+                                                    palette
+                                                        ? palette[
+                                                              palette.length - 1
+                                                          ]
+                                                        : '#4397ee'
+                                                })`,
+                                            }}
+                                        >
+                                            Delete
+                                        </button>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

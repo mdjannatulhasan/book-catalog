@@ -47,9 +47,18 @@ const SignIn = () => {
 
             if ('data' in response) {
                 const token = response.data.data.accessToken;
+
+                localStorage.setItem('id', response.data.data.id);
+                localStorage.setItem('role', response.data.data.role);
                 localStorage.setItem('token', token);
                 localStorage.setItem('email', email);
-                dispatch(setUser(email));
+                dispatch(
+                    setUser({
+                        email: email,
+                        id: response.data.data.id,
+                        role: response.data.data.role,
+                    })
+                );
                 toast({
                     variant: 'success',
                     title: 'Login successfull.',
@@ -60,6 +69,8 @@ const SignIn = () => {
                     'data' in response.error
                         ? (response.error.data as { message: string })?.message
                         : 'Something Went Wrong';
+                localStorage.removeItem('id');
+                localStorage.removeItem('role');
                 localStorage.removeItem('token');
                 localStorage.removeItem('email');
                 dispatch(setUser(''));

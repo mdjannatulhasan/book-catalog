@@ -9,14 +9,13 @@ import { IBookWithId } from '@/types/homeType';
 import { useAppSelector } from '@/redux/hook';
 
 const BookList = () => {
-    const { books, isLoading, count } = useAppSelector(
+    const { myBooks, isLoading, count } = useAppSelector(
         (state) => state.book
     ) as any;
-    console.log(books);
 
     let bookItems;
-    if (books?.length) {
-        bookItems = books.map(
+    if (myBooks?.length) {
+        bookItems = myBooks.map(
             ({
                 _id,
                 title,
@@ -46,7 +45,9 @@ const BookList = () => {
         <section className="py-12">
             <Container>
                 <div className="flex justify-between items-center gap-5">
-                    <SecTitle>All Books {count && `(${count})`}</SecTitle>
+                    <SecTitle>
+                        All Books {count ? `(${count})` : '(0)'}
+                    </SecTitle>
                     <Link
                         className="text-xl text-blue-600 font-semibold link flex gap-1 items-center"
                         to="/add-new-book"

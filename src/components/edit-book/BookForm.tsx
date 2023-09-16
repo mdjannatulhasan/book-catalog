@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FormEvent } from 'react';
+import { FormEvent, useState } from 'react';
 import BtnPrimary from '../common/BtnPrimary';
 import Container from '../common/Container';
 import InputCustom from '../common/InputCustom';
@@ -17,86 +17,101 @@ const BookForm = () => {
     const singleBook = useAppSelector(
         (state) => state.book.singleBook
     ) as IBookWithId;
+
+    const [status, setStatus] = useState('pending');
+
+    const { id, role } = useAppSelector((state) => state.user);
+
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const formElement = e.currentTarget as HTMLFormElement;
-        const data = {
-            code: formElement.code.value,
-            coverImage: formElement.coverImage.value,
-            title: formElement.bookTitle.value,
-            price: parseFloat(formElement.price.value),
-            author: formElement.author.value,
-            genre: formElement.genre.value,
-            publicationDate: formElement.publicationDate.value,
-        };
-
-        try {
-            const response = await updateBook({
-                data: data,
-                id: singleBook?._id,
-            });
-
-            if ('data' in response) {
-                toast({
-                    variant: 'success',
-                    title: 'Book updated successfully.',
-                    description: '',
-                });
-                navigate(`/book-details/${singleBook?._id}`);
-            } else {
-                const errorMessage =
-                    'data' in response.error
-                        ? (response.error.data as { message: string })?.message
-                        : 'Something Went Wrong';
-                const errorMessages =
-                    'data' in response.error
-                        ? (
-                              response.error.data as {
-                                  errorMessages: any;
-                                  message: string;
-                              }
-                          )?.errorMessages[0].message
-                        : 'Error in form';
-                let path =
-                    'data' in response.error
-                        ? (
-                              response.error.data as {
-                                  errorMessages: any;
-                                  message: string;
-                              }
-                          )?.errorMessages[0].path
-                        : '';
-                if (path == 'price') {
-                    path = 'Price';
-                }
-                toast({
-                    variant: 'destructive',
-                    title: 'Book update Failed.',
-                    description: `${errorMessage}${
-                        'status' in response.error &&
-                        response.error.status != 401
-                            ? `- ${errorMessages}`
-                            : ''
-                    } ${path && `'in' ${path}`}`,
-                });
-                if (
-                    'status' in response.error &&
-                    response.error.status != 401
-                ) {
-                    dispatch(handleLogout());
-                }
-            }
-        } catch (e) {
-            console.log(error);
-
+        if (singleBook.addedBy !== id && role !== 'admin') {
             toast({
                 variant: 'destructive',
-                title: 'Uh oh! Login Failed.',
-                description: 'There was a problem with your request.',
+                title: 'Book update Failed.',
+                description: `You are not the owner`,
             });
+        } else {
+            const formElement = e.currentTarget as HTMLFormElement;
+            const data = {
+                code: formElement.code.value,
+                coverImage: formElement.coverImage.value,
+                title: formElement.bookTitle.value,
+                price: parseFloat(formElement.price.value),
+                author: formElement.author.value,
+                genre: formElement.genre.value,
+                publicationDate: formElement.publicationDate.value,
+                status: status,
+            };
+
+            try {
+                const response = await updateBook({
+                    data: data,
+                    id: singleBook?._id,
+                });
+
+                if ('data' in response) {
+                    toast({
+                        variant: 'success',
+                        title: 'Book updated successfully.',
+                        description: '',
+                    });
+                    navigate(`/book-details/${singleBook?._id}`);
+                } else {
+                    const errorMessage =
+                        'data' in response.error
+                            ? (response.error.data as { message: string })
+                                  ?.message
+                            : 'Something Went Wrong';
+                    const errorMessages =
+                        'data' in response.error
+                            ? (
+                                  response.error.data as {
+                                      errorMessages: any;
+                                      message: string;
+                                  }
+                              )?.errorMessages[0].message
+                            : 'Error in form';
+                    let path =
+                        'data' in response.error
+                            ? (
+                                  response.error.data as {
+                                      errorMessages: any;
+                                      message: string;
+                                  }
+                              )?.errorMessages[0].path
+                            : '';
+                    if (path == 'price') {
+                        path = 'Price';
+                    }
+                    toast({
+                        variant: 'destructive',
+                        title: 'Book update Failed.',
+                        description: `${errorMessage}${
+                            'status' in response.error &&
+                            response.error.status != 401
+                                ? `- ${errorMessages}`
+                                : ''
+                        } ${path && `'in' ${path}`}`,
+                    });
+                    if (
+                        'status' in response.error &&
+                        response.error.status != 401
+                    ) {
+                        dispatch(handleLogout());
+                    }
+                }
+            } catch (e) {
+                console.log(error);
+
+                toast({
+                    variant: 'destructive',
+                    title: 'Uh oh! Login Failed.',
+                    description: 'There was a problem with your request.',
+                });
+            }
         }
     };
 
@@ -168,8 +183,52 @@ const BookForm = () => {
                                         }
                                     />
                                 </div>
+                                {role === 'admin' && (
+                                    <div className="lg:col-span-2">
+                                        <div className="flex gap-3">
+                                            <h3>Status:</h3>
+                                            <div className="flex gap-2 items-center">
+                                                <input
+                                                    type="radio"
+                                                    name="status"
+                                                    value="Published"
+                                                    id="published"
+                                                    onClick={() =>
+                                                        setStatus('published')
+                                                    }
+                                                ></input>
+
+                                                <label htmlFor="published">
+                                                    Published
+                                                </label>
+                                            </div>
+                                            <div className="flex gap-2 items-center">
+                                                <input
+                                                    type="radio"
+                                                    name="status"
+                                                    value="unpublished"
+                                                    id="unpublished"
+                                                    onClick={() =>
+                                                        setStatus('unpublished')
+                                                    }
+                                                ></input>
+
+                                                <label htmlFor="unpublished">
+                                                    Unpublished
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
-                            <BtnPrimary fullWidth disabled={isLoading}>
+                            <BtnPrimary
+                                fullWidth
+                                disabled={
+                                    isLoading ||
+                                    (singleBook.addedBy !== id &&
+                                        role !== 'admin')
+                                }
+                            >
                                 {isLoading
                                     ? 'Updating book....'
                                     : 'Update book'}

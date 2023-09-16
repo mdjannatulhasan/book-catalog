@@ -9,6 +9,7 @@ import SignUp from '@/pages/SignUp';
 import { createBrowserRouter } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 import Wishlist from '@/pages/Wishlist';
+import MyBooks from '@/pages/MyBooks';
 
 const routes = createBrowserRouter([
     {
@@ -22,6 +23,14 @@ const routes = createBrowserRouter([
             {
                 path: '/books',
                 element: <AllBooks />,
+            },
+            {
+                path: '/my-books',
+                element: (
+                    <PrivateRoute>
+                        <MyBooks />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: '/add-new-book',

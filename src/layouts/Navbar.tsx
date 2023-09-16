@@ -100,6 +100,16 @@ const Navbar = () => {
                                                         </SheetClose>
                                                     </NavLink>
                                                 </li>
+                                                <li>
+                                                    <NavLink to="/my-books">
+                                                        <GiBookCover />
+                                                        <SheetClose asChild>
+                                                            <span>
+                                                                My Books
+                                                            </span>
+                                                        </SheetClose>
+                                                    </NavLink>
+                                                </li>
                                                 <li className="">
                                                     <NavLink to="/add-new-book">
                                                         <GiNotebook />

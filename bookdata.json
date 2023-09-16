@@ -1,0 +1,349 @@
+[
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f24"
+        },
+        "code": "01",
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "coverImage": "https://i.ibb.co/8sHXH7s/fellowship-of-the-ring-illustration-johan-egerkrans.jpg",
+        "price": {
+            "$numberInt": "15.99"
+        },
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "publicationDate": "1954-07-29",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f25"
+        },
+        "title": "The Lord of the Rings: The Two Towers",
+        "coverImage": "https://i.ibb.co/pj1VmCK/two-towers-illustration-johan-egerkrans.jpg",
+        "price": {
+            "$numberInt": "14.99"
+        },
+        "author": "J.R.R. Tolkien",
+        "genre": "Adventure",
+        "publicationDate": "1954-11-11",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f26"
+        },
+        "title": "The Lord of the Rings: The Return of the King",
+        "coverImage": "https://i.ibb.co/Jxdc2P1/return-of-the-king-illustration-johan-egerkrans.jpg",
+        "price": {
+            "$numberInt": "16.99"
+        },
+        "author": "J.R.R. Tolkien",
+        "genre": "Fantasy",
+        "publicationDate": "1955-10-20",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f27"
+        },
+        "title": "Harry Potter and the Sorcerer's Stone",
+        "coverImage": "https://i.ibb.co/dfrPkJM/2359.webp",
+        "price": {
+            "$numberInt": "12.99"
+        },
+        "author": "J.K. Rowling",
+        "genre": "Fantasy",
+        "publicationDate": "1997-06-26",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f28"
+        },
+        "title": "Harry Potter and the Chamber of Secrets",
+        "coverImage": "https://i.ibb.co/qxtdhVR/Harry-Potter-Book-Covers-Chamber-of-Secrets-us-1-682x1024.png",
+        "price": {
+            "$numberInt": "13.99"
+        },
+        "author": "J.K. Rowling",
+        "genre": "Fantasy",
+        "publicationDate": "1998-07-02",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f29"
+        },
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "coverImage": "https://i.ibb.co/2S2Jkkn/2359-1.webp",
+        "price": {
+            "$numberInt": "14.99"
+        },
+        "author": "J.K. Rowling",
+        "genre": "Adventure",
+        "publicationDate": "1999-07-08",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f2a"
+        },
+        "title": "Harry Potter and the Goblet of Fire",
+        "coverImage": "https://i.ibb.co/MMFKrWk/goblet-of-fire-ebook-cover.jpg",
+        "price": {
+            "$numberInt": "15.99"
+        },
+        "author": "J.K. Rowling",
+        "genre": "Fantasy",
+        "publicationDate": "2000-07-08",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f2b"
+        },
+        "title": "Harry Potter and the Order of the Phoenix",
+        "coverImage": "https://i.ibb.co/DtSmVNR/1660.webp",
+        "price": {
+            "$numberInt": "16.99"
+        },
+        "author": "J.K. Rowling",
+        "genre": "Fantasy",
+        "publicationDate": "2003-06-21",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f2c"
+        },
+        "title": "Harry Potter and the Half-Blood Prince",
+        "coverImage": "https://i.ibb.co/R2Dn1Wz/2359-2.webp",
+        "price": {
+            "$numberInt": "17.99"
+        },
+        "author": "J.K. Rowling",
+        "genre": "Thriller",
+        "publicationDate": "2005-07-16",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f2d"
+        },
+        "title": "Harry Potter and the Deathly Hallows",
+        "coverImage": "https://i.ibb.co/JsBHMQx/harry-potter-7.jpg",
+        "price": {
+            "$numberInt": "18.99"
+        },
+        "author": "J.K. Rowling",
+        "genre": "Fantasy",
+        "publicationDate": "2007-07-21",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f2e"
+        },
+        "title": "To Kill a Mockingbird",
+        "price": {
+            "$numberInt": "11.99"
+        },
+        "author": "Harper Lee",
+        "genre": "Classic",
+        "publicationDate": "1960-07-11",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f2f"
+        },
+        "title": "1984",
+        "price": {
+            "$numberInt": "10.99"
+        },
+        "author": "George Orwell",
+        "genre": "Dystopian",
+        "publicationDate": "1949-06-08",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f30"
+        },
+        "title": "The Great Gatsby",
+        "price": {
+            "$numberInt": "12.99"
+        },
+        "author": "F. Scott Fitzgerald",
+        "genre": "Literary Fiction",
+        "publicationDate": "1925-04-10",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f31"
+        },
+        "title": "Pride and Prejudice",
+        "price": {
+            "$numberInt": "9.99"
+        },
+        "author": "Jane Austen",
+        "genre": "Romance",
+        "publicationDate": "1813-01-28",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f32"
+        },
+        "title": "The Martian",
+        "price": {
+            "$numberInt": "14.99"
+        },
+        "author": "Andy Weir",
+        "genre": "Science Fiction",
+        "publicationDate": "2014-02-11",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f33"
+        },
+        "title": "Gone Girl",
+        "price": {
+            "$numberInt": "13.99"
+        },
+        "author": "Gillian Flynn",
+        "genre": "Mystery",
+        "publicationDate": "2012-05-24",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f34"
+        },
+        "title": "Educated",
+        "price": {
+            "$numberInt": "16.99"
+        },
+        "author": "Tara Westover",
+        "genre": "Memoir",
+        "publicationDate": "2018-02-20",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f35"
+        },
+        "title": "The Night Circus",
+        "price": {
+            "$numberInt": "15.99"
+        },
+        "author": "Erin Morgenstern",
+        "genre": "Fantasy",
+        "publicationDate": "2011-09-13",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f36"
+        },
+        "title": "The Girl with the Dragon Tattoo",
+        "price": {
+            "$numberInt": "11.99"
+        },
+        "author": "Stieg Larsson",
+        "genre": "Thriller",
+        "publicationDate": "2005-08-16",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f37"
+        },
+        "title": "The Alchemist",
+        "price": {
+            "$numberInt": "9.99"
+        },
+        "author": "Paulo Coelho",
+        "genre": "Philosophical Fiction",
+        "publicationDate": "1988",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    },
+    {
+        "_id": {
+            "$oid": "64f15a4f78c8977b83164f38"
+        },
+        "title": "The Da Vinci Code",
+        "price": {
+            "$numberInt": "12.99"
+        },
+        "author": "Dan Brown",
+        "genre": "Mystery",
+        "publicationDate": "2003-03-18",
+        "addedBy": {
+            "$oid": "65059c22e2120350e4e141ba"
+        },
+        "status": "published"
+    }
+]

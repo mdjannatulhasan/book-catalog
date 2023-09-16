@@ -11,7 +11,7 @@ const bookApi = api.injectEndpoints({
                 method: 'POST',
                 body: data,
             }),
-            invalidatesTags: ['books'],
+            invalidatesTags: ['books', 'my-books'],
         }),
         updateBook: builder.mutation({
             query: ({ data, id }) => ({
@@ -22,11 +22,14 @@ const bookApi = api.injectEndpoints({
                 method: 'PATCH',
                 body: data,
             }),
-            invalidatesTags: ['book', 'books'],
+            invalidatesTags: ['book', 'books', 'my-books'],
         }),
         getBooks: builder.query({
             query: (args) => {
                 return {
+                    headers: {
+                        Authorization: `${localStorage.getItem('token')}`,
+                    },
                     url: '/books',
                     params: {
                         limit: 1000,
@@ -38,6 +41,23 @@ const bookApi = api.injectEndpoints({
             },
             providesTags: ['books'],
         }),
+        getMyBooks: builder.query({
+            query: (args) => {
+                return {
+                    headers: {
+                        Authorization: `${localStorage.getItem('token')}`,
+                    },
+                    url: '/books/my-books',
+                    params: {
+                        limit: 1000,
+                        searchTerm: args?.searchTerm && args?.searchTerm,
+                        genre: args?.genre && args?.genre,
+                        year: args?.year && args?.year,
+                    },
+                };
+            },
+            providesTags: ['my-books'],
+        }),
         getSingleBook: builder.query({
             query: (id) => `/books/${id}`,
             providesTags: ['book'],
@@ -47,7 +67,7 @@ const bookApi = api.injectEndpoints({
                 url: `/books/${id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: ['books'],
+            invalidatesTags: ['books', 'my-books'],
         }),
         getReviews: builder.query({
             query: (id) => `/reviews/${id}`,
@@ -75,4 +95,5 @@ export const {
     useDeleteBookMutation,
     useGetReviewsQuery,
     useSetReviewsMutation,
+    useGetMyBooksQuery,
 } = bookApi;

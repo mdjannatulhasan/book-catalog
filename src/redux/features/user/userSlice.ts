@@ -2,10 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface IUserState {
     email: string;
+    id: string;
+    role: string;
 }
 
 const initialState: IUserState = {
     email: '',
+    id: '',
+    role: 'user',
 };
 
 const userSlice = createSlice({
@@ -13,12 +17,18 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
-            state.email = action.payload;
+            state.email = action.payload?.email;
+            state.id = action?.payload.id;
+            state.role = action?.payload.role;
         },
         handleLogout: (state) => {
             state.email = '';
-            localStorage.removeItem('email');
+            state.id = '';
+            state.role = 'user';
+            localStorage.removeItem('id');
+            localStorage.removeItem('role');
             localStorage.removeItem('token');
+            localStorage.removeItem('email');
         },
     },
 });
