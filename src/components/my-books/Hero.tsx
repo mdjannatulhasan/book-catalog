@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
-import { FormEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 // import BtnPrimary from '../common/BtnPrimary';
 import { useGetMyBooksQuery } from '@/redux/features/book/bookApi';
 import { useAppDispatch } from '@/redux/hook';
 import { setMyBooks, setIsLoading } from '@/redux/features/book/bookSlice';
 
 const Hero = () => {
-    const [args, setArgs] = useState({});
+    const [args] = useState({});
     const { data, isLoading } = useGetMyBooksQuery(args);
 
     const dispacth = useAppDispatch();
